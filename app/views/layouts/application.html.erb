@@ -2,15 +2,54 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+        <div class="container">
+          <span class="navbar-brand">
+            <!--ここにロゴを入れる-->
+          </span>
+         <div class="row">
+
+          <% if admin_signed_in? %>
+            <div>
+              <a class="nav-link" href="/admin/items">商品一覧</a>
+            </div>
+            <div>
+              <a class="nav-link" href="/admin/customers">顧客一覧</a>
+            </div>
+            <div>
+              <a class="nav-link" href="/orders">注文履歴一覧</a>
+          　</div>
+            <div>
+              <a class="nav-link" href="/admin_genres">ジャンル</a>
+            </div>
+            <div>
+              <a class="nav-link" href="admin/sign_out">ログアウト</a>
+            </div>
+          <% else %>
+            <div>
+             <a class="nav-link" href="/about">about</a>
+           </div>
+           <div>
+             <a class="nav-link" href="/admin/items">商品一覧</a>
+           </div>
+           <div>
+             <a class="nav-link" href="/admin/items/new">新規登録</a>
+           </div>
+           <div>
+             <a class="nav-link" href="/admin/sign_in">ログイン</a>
+           </div>
+          <% end %>
+         </div>
+        </div>
+    </header>
     <%= yield %>
   </body>
 </html>
