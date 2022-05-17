@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= form_with model: @item do |f| %>
+      <%= form_with model: @item,url: admin_items_path do |f| %>
         <h3>商品新規登録</h3>
         <div class="form_group">
          商品画像
@@ -25,8 +25,8 @@
         </div>
         <div class="form_group">
           販売ステータス
-          <%= f.radio_button :is_active,"true" %>販売中
-          <%= f.radio_button :is_active,"false" %>販売停止中
+          <%= f.radio_button :is_active,"販売中" %>販売中
+          <%= f.radio_button :is_active,"販売停止中" %>販売停止中
         </div>
         <div class="form_group">
           <%=f.submit "新規登録" %>

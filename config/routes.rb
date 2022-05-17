@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders,only:[:show,:update]
   end
+  
 # 会員側ルーティング
-
 # homes
   get "/" => "public/homes#top"
   get "/about" => "public/homes#about"
