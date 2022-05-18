@@ -26,12 +26,12 @@
             </div>
             <div>
               <a class="nav-link" href="/orders">注文履歴一覧</a>
-          　</div>
-            <div>
-              <a class="nav-link" href="/admin_genres">ジャンル</a>
             </div>
             <div>
-              <a class="nav-link" href="admin/sign_out">ログアウト</a>
+              <a class="nav-link" href="/admin/genres">ジャンル</a>
+            </div>
+            <div>
+             <%=link_to "ログアウト",destroy_admin_session_path, method: :delete,class: "nav-link" %>
             </div>
           <% else %>
             <div>
