@@ -1,2 +1,37 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @item,url: admin_items_path do |f| %>
+        <h3>商品編集</h3>
+        <div class="form_group mb-3">
+         商品画像
+         <%= f.file_field :image %>
+        </div>
+        <div class="form_group mb-2">
+          商品名前
+          <%=f.text_field :name %>
+        </div>
+        <div class="form_group mb-3">
+          商品説明
+          <%=f.text_area :introduction %>
+        </div>
+        <div class="form_group mb-3">
+          ジャンル
+          <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+        </div>
+        <div class="form_group mb-3">
+          税抜価格
+          <%=f.number_field :price %>円
+        </div>
+        <div class="form_group mb-2">
+          販売ステータス
+          <%= f.radio_button :is_active,"販売中" %>販売中
+          <%= f.radio_button :is_active,"販売停止中" %>販売停止中
+        </div>
+        <div class="form_group">
+          <%=f.submit "変更を保存",class:"btn btn-success"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

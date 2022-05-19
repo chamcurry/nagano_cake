@@ -3,7 +3,7 @@
     <div class="col">
       <h3>商品詳細</h3>
       <div class="item-image">
-        <%=image_tad @item.image,size:"100x100" %>
+        <%=image_tag @item.image,size:"300x200" %>
       </div>
       <div class="group">
         商品名 <%=@item.name %>
@@ -13,6 +13,7 @@
       </div>
       <div class="group">
         <!--ここにジャンル-->
+        ジャンル <%=@item.genre.name %>
       </div>
       <div class="group">
         税抜価格 <%=@item.price %>
@@ -20,7 +21,7 @@
       <div class="group">
         販売ステータス <%=@item.is_active %>
       </div>
-      <%=link_to "編集する",edit_admin_genre_path(@item),class: "btn btn-success" %>
+      <%=link_to "編集する",edit_admin_item_path(@item),class: "btn btn-success" %>
     </div>
   </div>
 </div>
