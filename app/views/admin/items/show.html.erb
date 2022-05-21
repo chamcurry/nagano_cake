@@ -16,7 +16,10 @@
         ジャンル <%=@item.genre.name %>
       </div>
       <div class="group">
-        税抜価格 <%=@item.price %>
+        <div>
+        税込価格 <%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円
+        </div>
+        (税抜価格)
       </div>
       <div class="group">
         販売ステータス <%=@item.is_active %>

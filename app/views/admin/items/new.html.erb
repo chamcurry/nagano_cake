@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <!--imageバリデーション-->
+      <% if @item.errors.any?%>
+        <%=@item.errors.count %>
+        <ul>
+          <% @item.errors.full_messages.each do |message|%>
+           <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= form_with model: @item,url: admin_items_path do |f| %>
         <h3>商品新規登録</h3>
         <div class="form_group mb-3">
@@ -26,12 +36,12 @@
         <div class="form_group mb-2">
           販売ステータス
           <span class="true">
-           <%= f.label :is_active, '販売中', value: 1 %>
-           <%= f.radio_button :is_active,"1" %>
+           <%= f.label :is_active, '販売中' %>
+           <%= f.radio_button :is_active %>
           </span>
           <span class="false">
-           <%= f.label :is_active, '販売停止中', value: 0 %>
-           <%= f.radio_button :is_active,"0" %>
+           <%= f.label :is_active, '販売停止中'%>
+           <%= f.radio_button :is_active%>
           </span>
         </div>
         <div class="form_group">
