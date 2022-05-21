@@ -4,12 +4,19 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   # before_action :configure_permitted_parameters, if: :registrations_controller?
+    before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def index
+    @customers =Custmer.all
+  end
+  def show
+    @customer =Custmner.find(params[:id])
+  end
   # GET /resource/sign_up
   # def new
   #   super
   # end
-
+  
   # POST /resource
   # def create
   #   super
@@ -39,7 +46,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_name_kana,:first_name_kana,:postal_code,:address,:telephone_number])
+  end
   # def configure_permitted_parameters
   # devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   # end

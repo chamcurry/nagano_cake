@@ -36,12 +36,12 @@
         <div class="form_group mb-2">
           販売ステータス
           <span class="true">
-           <%= f.label :is_active, '販売中' %>
-           <%= f.radio_button :is_active %>
+           <%= f.label :is_active,'販売中' %>
+           <%= f.radio_button :is_active,true %>
           </span>
           <span class="false">
-           <%= f.label :is_active, '販売停止中'%>
-           <%= f.radio_button :is_active%>
+           <%= f.label :is_active,'販売停止中' %>
+           <%= f.radio_button :is_active,false %>
           </span>
         </div>
         <div class="form_group">

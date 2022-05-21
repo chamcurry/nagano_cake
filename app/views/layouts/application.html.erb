@@ -33,6 +33,7 @@
             <div>
              <%=link_to "ログアウト",destroy_admin_session_path, method: :delete,class: "nav-link" %>
             </div>
+
           <% else %>
             <div>
              <a class="nav-link" href="/about">about</a>
@@ -46,6 +47,9 @@
            <div>
              <a class="nav-link" href="/admin/sign_in">ログイン</a>
            </div>
+           <div>
+             <%=link_to "顧客ログアウト",destroy_customer_session_path, method: :delete,class: "nav-link" %>
+            </div>
           <% end %>
          </div>
         </div>
