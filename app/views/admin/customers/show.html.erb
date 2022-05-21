@@ -1,32 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3><%= @custotmer.first_name %>さんの会員詳細</h3>
-      <div class="group">
-        会員ID <%=@custotmer.id %>
-      </div>
-      <div class="group">
-        氏名 <%=@custotmer.first_name %>
-      </div>
-      <div class="group">
+      <h3>
+        <%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細
+      </h3>
+      <p class="group">
+        会員ID <%=@customer.id %>
+      </p>
+      <p class="group">
+        氏名 <%=@customer.first_name %> <%=@customer.last_name %>
+      </p>
+      <p class="group">
         <!--ここにジャンル-->
-        フリガナ <%=@custotmer.first_name_kana %>
-      </div>
-      <div class="group">
-        郵便番号 <%=@custotmer.postal_code %>
-      </div>
-      <div class="group">
-        住所 <%=@custotmer.address %>
-      </div>
-      <div class="group">
-        電話番号 <%=@custotmer.telephone_number %>
-      </div>
-      <div class="group">
-        メールアドレス <%=@custotmer.email %>
-      </div>
-      <div class="group">
-        会員ステータス <%=@custotmer.is_active %>
-      </div>
+        フリガナ <%=@customer.first_name_kana %> <%=@customer.last_name_kana %>
+      </p>
+      <p class="group">
+        郵便番号 <%=@customer.postal_code %>
+      </p>
+      <p class="group">
+        住所 <%=@customer.address %>
+      </p>
+      <p class="group">
+        電話番号 <%=@customer.telephone_number %>
+      </p>
+      <p class="group">
+        メールアドレス <%=@customer.email %>
+      </p>
+      <p class="group">
+        <!--会員ステータスが渡るようにする-->
+        会員ステータス <%=@customer.is_active %>
+      </p>
+      <%=link_to '編集する',edit_admin_customer_path(@customer),class: "btn btn-success" %>
+      <!--下に注文履歴一覧のページリンクを貼る-->
     </div>
   </div>
 </div>

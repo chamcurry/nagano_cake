@@ -12,6 +12,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def show
     @customer =Custmner.find(params[:id])
   end
+
   # GET /resource/sign_up
   # def new
   #   super
