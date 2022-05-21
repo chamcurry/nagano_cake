@@ -7,17 +7,17 @@ class Public::RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index
-    @customers =Custmer.all
+    @customers =Customer.all
   end
   def show
-    @customer =Custmner.find(params[:id])
+    @customer =Customer.find(params[:id])
   end
 
   # GET /resource/sign_up
   # def new
   #   super
   # end
-  
+
   # POST /resource
   # def create
   #   super
