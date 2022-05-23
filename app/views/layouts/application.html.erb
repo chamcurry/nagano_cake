@@ -11,49 +11,50 @@
 
   <body>
     <header>
-        <div class="container">
-          <span class="navbar-brand">
+      <div class="container border-bottom m-3">
+        <div class="row navbar ">
+          <div class="col"></div>
             <!--ここにロゴを入れる-->
-          </span>
-         <div class="row">
-
+          <ul class="col ml-auto ">
           <% if admin_signed_in? %>
-            <div>
-              <a class="nav-link" href="/admin/items">商品一覧</a>
-            </div>
-            <div>
-              <a class="nav-link" href="/admin/customers">顧客一覧</a>
-            </div>
-            <div>
-              <a class="nav-link" href="/orders">注文履歴一覧</a>
-            </div>
-            <div>
-              <a class="nav-link" href="/admin/genres">ジャンル</a>
-            </div>
-            <div>
-             <%=link_to "ログアウト",destroy_admin_session_path, method: :delete,class: "nav-link" %>
-            </div>
-
+            <li class="nav-item list-inline-item ">
+              <%=link_to "商品一覧",admin_items_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%=link_to "会員一覧",admin_customers_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%=link_to "注文履歴一覧",root_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%= link_to "ジャンル",admin_genres_path%>
+            </li>
+            <li class="nav-item list-inline-item">
+             <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
+            </li>
           <% else %>
-            <div>
-             <a class="nav-link" href="/about">about</a>
-           </div>
-           <div>
-             <a class="nav-link" href="/admin/items">商品一覧</a>
-           </div>
-           <div>
+            <li class="nav-item list-inline-item">
+              <%=link_to "about",about_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%=link_to "商品一覧",admin_items_path %>
+            </li>
+            <li class="nav-item list-inline-item">
              <a class="nav-link" href="/admin/items/new">新規登録</a>
-           </div>
-           <div>
+            </li>
+            <li class="nav-item list-inline-item">
              <a class="nav-link" href="/admin/sign_in">ログイン</a>
-           </div>
-           <div>
-             <%=link_to "顧客ログアウト",destroy_customer_session_path, method: :delete,class: "nav-link" %>
-            </div>
+            </li>
+            <li class="nav-item list-inline-item">
+             <%=link_to "顧客ログアウト",destroy_customer_session_path, method: :delete %>
+            </li>
           <% end %>
-         </div>
-        </div>
+          </ul>
+      </div>
     </header>
     <%= yield %>
+   <footer class="footer">
+    <div class="row border-bottom mt-5"></div>
+   </footer>
   </body>
 </html>

@@ -28,10 +28,11 @@
       </p>
       <p class="group">
         <!--会員ステータスが渡るようにする-->
-        会員ステータス <%=@customer.is_active %>
+        退会ステータス <%=@customer.is_active %>
       </p>
       <%=link_to '編集する',edit_admin_customer_path(@customer),class: "btn btn-success" %>
       <!--下に注文履歴一覧のページリンクを貼る-->
+      <%=link_to '注文履歴一覧を見る',admin_path,class: "btn btn-info" %>
     </div>
   </div>
 </div>
