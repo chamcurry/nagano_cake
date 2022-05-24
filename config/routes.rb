@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   get "/about" => "public/homes#about"
 
   # items
-  resources :items,only:[:index,:show]
+  get "/items" => "public/items#index"
+  get "/items/#{:id}" => "public/items#show"
 
   # customers
   get "/customers/my_page" => "customers#show"

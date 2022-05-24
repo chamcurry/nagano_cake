@@ -1,2 +1,23 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col ">
+      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto" %>
+    </div>
+  </div>
+    <div class="col h3">新着商品</div>
+  <div class="row">
+   <div class="col mx-auto">
+    <% @items.first(4).each do |item|%>
+      <%=link_to "" do %>
+        <%=image_tag item.image,size: "170x120" %>
+      <% end %>
+    <% end %>
+   </div>
+  </div>
+  <div class="row">
+    <div class="col text-right">
+     <%=link_to "全ての商品を見る",items_path %>
+    </div>
+  </div>
+  </div>
+</div>
