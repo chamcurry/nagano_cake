@@ -12,10 +12,10 @@
   <body>
     <header>
       <div class="container border-bottom m-3">
-        <div class="row navbar ">
+        <div class="row navbar">
           <div class="col"></div>
             <!--ここにロゴを入れる-->
-          <ul class="col ml-auto ">
+          <ul class="col">
           <% if admin_signed_in? %>
             <li class="nav-item list-inline-item ">
               <%=link_to "商品一覧",admin_items_path %>
@@ -32,21 +32,31 @@
             <li class="nav-item list-inline-item">
              <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
             </li>
+          <% elsif %>
+            <li class="nav-item list-inline-item">
+              <%=link_to "マイページ",customers_my_page_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%=link_to "商品一覧",items_path %>
+            </li>
+            <li class="nav-item list-inline-item">
+              <%=link_to "カート",cart_items_path %>
+            </li>
+             <li class="nav-item list-inline-item">
+             <%=link_to "顧客ログアウト",destroy_customer_session_path, method: :delete %>
+            </li>
           <% else %>
             <li class="nav-item list-inline-item">
               <%=link_to "about",about_path %>
             </li>
             <li class="nav-item list-inline-item">
-              <%=link_to "商品一覧",admin_items_path %>
+              <%=link_to "商品一覧",items_path %>
             </li>
             <li class="nav-item list-inline-item">
-             <a class="nav-link" href="/admin/items/new">新規登録</a>
+             <%=link_to "新規登録",new_customer_registration_path %>
             </li>
             <li class="nav-item list-inline-item">
-             <a class="nav-link" href="/admin/sign_in">ログイン</a>
-            </li>
-            <li class="nav-item list-inline-item">
-             <%=link_to "顧客ログアウト",destroy_customer_session_path, method: :delete %>
+             <%=link_to "会員ログイン",new_customer_session_path %>
             </li>
           <% end %>
           </ul>

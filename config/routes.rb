@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root to: "public/homes#top"
   # 管理者側のルーティング
   get "/admin" => "admin/homes#top"
-  root to: "admin/homes#top"
   namespace :admin do
     resources :customers,only:[:index,:show,:edit,:update]
   end
