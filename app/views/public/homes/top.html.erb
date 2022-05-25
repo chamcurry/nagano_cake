@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col ">
-      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto" %>
+    <div class="col">
+      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image" %>
     </div>
   </div>
+  
     <div class="col h3">新着商品</div>
   <div class="row">
    <div class="col mx-auto">
     <% @items.first(4).each do |item|%>
-      <%=link_to "" do %>
+      <%=link_to items_id_path(item) do %>
         <%=image_tag item.image,size: "170x120" %>
       <% end %>
+      <%= item.name %>
     <% end %>
    </div>
   </div>
+  
   <div class="row">
     <div class="col text-right">
      <%=link_to "全ての商品を見る",items_path %>
