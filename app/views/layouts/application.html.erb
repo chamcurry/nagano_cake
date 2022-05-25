@@ -32,7 +32,7 @@
             <li class="nav-item list-inline-item">
              <%=link_to "ログアウト",destroy_admin_session_path, method: :delete %>
             </li>
-          <% elsif %>
+          <% elsif customer_signed_in? %>
             <li class="nav-item list-inline-item">
               <%=link_to "マイページ",customers_my_page_path %>
             </li>
