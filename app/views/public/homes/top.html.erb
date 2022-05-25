@@ -4,19 +4,18 @@
       <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image" %>
     </div>
   </div>
-  
     <div class="col h3">新着商品</div>
-  <div class="row">
-   <div class="col mx-auto">
-    <% @items.first(4).each do |item|%>
+
+    <% @items.last(4).each do |item|%>
+     <div class="d-inline-flex">
       <%=link_to items_id_path(item) do %>
-        <%=image_tag item.image,size: "170x120" %>
+        <%=image_tag item.image,size: "170x120",class: "d-inline-flex rounded-circle" %>
       <% end %>
-      <%= item.name %>
+     </div>
+       <%= item.name%>
+       ￥<%=item.price.to_s(:delimited) %>
     <% end %>
-   </div>
-  </div>
-  
+
   <div class="row">
     <div class="col text-right">
      <%=link_to "全ての商品を見る",items_path %>
