@@ -14,7 +14,9 @@
       <div class="container  m-3">
         <div class="row navbar">
           <div class="col">
-            <%= image_tag 'logo-cake',width: '40%', height: '30%',class: "d-block ml-2 background-image" %>
+            <%=link_to root_path do %>
+             <%= image_tag 'logo-cake',width: '40%', height: '30%',class: "d-block ml-2 background-image" %>
+            <% end %>
           </div>
             <!--ここにロゴを入れる-->
            <span class="col ml-1 font-weight-bold">
