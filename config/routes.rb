@@ -28,24 +28,30 @@ Rails.application.routes.draw do
   get "/items/#{:id}" => "public/items#show"
 
   # customers
-  get "/customers/my_page" => "customers#show"
-  get "/customers/edit" => "customers#edit"
-  patch "/customers"=> "customers#update"
-  get "/customers/unsubscribe" => "customers#unsubscribe"
-  patch "/customers/withdraw" => "customers#withdraw"
+  get "/customers/my_page" => "public/customers#show"
+  get "/customers/edit" => "public/customers#edit"
+  patch "/customers"=> "public/customers#update"
+  get "/customers/unsubscribe" => "public/customers#unsubscribe"
+  patch "/customers/withdraw" => "public/customers#withdraw"
 
   # cart_items
   resources :cart_items,only:[:index,:update,:destroy,:create]
   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
 
   # orders
-  resources :orders,only:[:new,:create,:index,:show]
+  get "/orders/new" => "public/orders#new"
+  post "/orders" => "public/orders#create"
+  get "/orders#{:id}" => "public/orders#show"
+  get "/orders" => "public/orders#index"
   get "/orders/complete" => "orders#complete"
   post "/orders/confirm" => "orders#confirm"
 
   # addresses
-  resources :addresses,only:[:index,:edit,:create,:update,:destroy]
-
+  get "/addresses" => "public/addresses#index"
+  get "/addresses/#{:id}/edit" => "public/addresses#edit"
+  post "/addresses/" => "public/addresses#create"
+  patch "/addresses/#{:id}" => "public/addresses#update"
+  delete "/addresses/#{:id}" => "public/addresses#destroy"
   # デバイス
   devise_for :customers,skip:[:passwords],controllers: {
   registrations: "public/registrations",

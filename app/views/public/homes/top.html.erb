@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image" %>
+      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image"  %>
     </div>
+   
   </div>
     <div class="col h3">新着商品</div>
 
@@ -12,7 +13,7 @@
         <%=image_tag item.image,size: "170x120",class: "d-inline-flex rounded-circle" %>
       <% end %>
      </div>
-       <%= item.name%>
+       <%= item.name %>
        ￥<%=item.price.to_s(:delimited) %>
     <% end %>
 

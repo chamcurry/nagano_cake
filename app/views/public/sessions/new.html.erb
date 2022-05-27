@@ -1,5 +1,6 @@
-<div class="container">
-      <div class="h4 text-left">会員ログイン</div>
+  <div class="container">
+      <div class="row ml-3 h4 text-left">ログイン</div>
+      <div class="row m-3">会員の方はこちらからログイン</div>
       <div class="row justify-content-center">
         <%= form_with model: @customer,url: customer_session_path do |f| %>
           <div class="form-group row">
@@ -21,5 +22,9 @@
           </div>
         <% end %>
       </div>
-        <!--<%= render "public/shared/links" %>-->
-</div>
+    <div class="row mt-5 ml-3">会員登録がお済みではない方</div>
+    <div class=" d-flex mt-2 ml-5">
+      <%=link_to "こちら",new_customer_registration_path %>から新規登録を行ってください。
+    </div>
+  </div>
+  <!--<%= render "public/shared/links" %>から新規登録を行ってください。-->
