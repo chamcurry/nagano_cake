@@ -17,6 +17,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.update(is_active: true)
   end
   private
   def customers_params

@@ -29,7 +29,7 @@ class Public::SessionsController < Devise::SessionsController
     # [処理内容２]取得したアカウントのパスワードと入力されたパスワードが一致しているか判別
     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
       # [処理内容３]is_activeの値がtrueだった場合、サインアップ画面に遷移させる
-       redirect_to new_customer_registration
+       redirect_to new_customer_registration_path
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
