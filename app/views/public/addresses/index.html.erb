@@ -1,2 +1,49 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<div class="container">
+    <div class="row">
+      <div class="h5 m-5">配送先登録/一覧</div>
+    </div>
+    <%= form_with model: @address,url: addresses_path do |f| %>
+      <div class="row mb-3">
+       <%=f.label "郵便番号",class: "col-sm-2" %>
+       <div class="col">
+        <%=f.text_field :postal_code,class: "form-control-sm"%>
+       </div>
+      </div>
+      <div class="row mb-3">
+        <%=f.label "住所",class: "col-sm-2" %>
+       <div class="col">
+        <%=f.text_field :address,class: "form-control-sm" %>
+       </div>
+      </div>
+      <div class="row mb-3">
+        <%= f.label "名前",class: "col-sm-2" %>
+       <div class="col">
+        <%= f.text_field :name,class: "form-control-sm"%>
+        <%=f.submit '新規登録',class: "ml-5 btn btn-success w-25 btn-sm" %>
+       </div>
+      </div>
+    <% end %>
+   <table class="table mt-5 table-bordered">
+     <thead>
+      <tr>
+       <th class="col-2">郵便番号</th>
+       <th class="col-4">住所</th>
+       <th class="col-2">宛名</th>
+       <th class="col-4"></th>
+      </tr>
+     </thead>
+     <tbody>
+       <% @addresses.each do |shipping| %>
+       <tr>
+         <td><%=shipping.postal_code%></td>
+         <td><%=shipping.address%></td>
+         <td><%=shipping.name%></td>
+         <td>
+           <%=link_to "編集する",addresses_id_edit_path(shipping),class: "btn btn-success btn-sm" %>
+         　<%=link_to "削除する","/addresses/#{shipping.id}",method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger btn-sm"%>
+         </td>
+       </tr>
+       <% end %>
+     </tbody>
+   </table>
+</div>

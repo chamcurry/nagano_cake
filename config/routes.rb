@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   # addresses
   get "/addresses" => "public/addresses#index"
   get "/addresses/#{:id}/edit" => "public/addresses#edit"
-  post "/addresses/" => "public/addresses#create"
+  post "/addresses" => "public/addresses#create"
   patch "/addresses/#{:id}" => "public/addresses#update"
   delete "/addresses/#{:id}" => "public/addresses#destroy"
   # デバイス
