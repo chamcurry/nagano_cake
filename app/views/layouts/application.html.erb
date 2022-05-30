@@ -10,26 +10,25 @@
   </head>
 
   <body>
-    <header class="border-bottom">
-      <div class="container  m-3">
-        <div class="row navbar">
+    <header class="row border-bottom ">
+        <nav class="navbar" style="background-color:#d2b48c">
           <div class="col">
             <%=link_to root_path do %>
-             <%= image_tag 'logo-cake',width: '50%', height: '30%',class: "d-block ml-2 background-image" %>
+             <%= image_tag 'patisserie',width: '40%', height: '40%',class: "d-block ml-2 background-image" %>
             <% end %>
           </div>
-           <div class="col ml-1 font-weight-bold">
+          <div class="col mr-5 font-weight-bold">
             <% if customer_signed_in? %>
-             <div class="text">
+             <span class="text-light">
               ようこそ、
               <%= current_customer.first_name %>
               さん！
-             </div>
+             </span>
             <% end %>
-           </div>
-          <ul class="navbar mr-auto">
+          </div>
+          <ul class="mr-auto ">
           <% if admin_signed_in? %>
-            <li class="nav-item list-inline-item border">
+            <li class="nav-item list-inline-item">
               <%=link_to "商品一覧",admin_items_path,class: "border rounded p-2" %>
             </li>
             <li class="nav-item list-inline-item">
@@ -45,8 +44,8 @@
              <%=link_to "ログアウト",destroy_admin_session_path, method: :delete,class: "border rounded p-2" %>
             </li>
           <% elsif customer_signed_in? %>
-            <li class="nav-item list-inline-item">
-              <%=link_to "マイページ",customers_my_page_path,class: "border rounded p-2" %>
+            <li class="nav-item list-inline-item ">
+              <%=link_to "マイページ",customers_my_page_path,class: "border rounded p-2 " %>
             </li>
             <li class="nav-item list-inline-item">
               <%=link_to "商品一覧",items_path,class: "border rounded p-2" %>
@@ -72,7 +71,7 @@
             </li>
           <% end %>
           </ul>
-      </div>
+        </nav>
     </header>
     <%= yield %>
    <footer class="footer">

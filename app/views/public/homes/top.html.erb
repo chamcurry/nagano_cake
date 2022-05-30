@@ -1,25 +1,35 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image"  %>
+  <div class="row mx-auto">
+    <div class="card">
+      <%= image_tag 'cupcake',width: '130%', height: '100%',class: "d-block mx-auto background-image"  %>
+       <p class="card-img-overlay font-weight-bold text-black-50">
+         ようこそ、ながのcakeへ!<br>
+         このサイトは、ケーキ販売のECサイトになります。<br>
+         会員でない方も商品の閲覧はできますが、<br>
+         購入には会員登録が必要になります。
+       </p>
     </div>
-
   </div>
     <div class="col h3">新着商品</div>
-
+    <div class="row mb-4">
     <% @items.last(4).each do |item|%>
-     <div class="d-inline-flex">
+     <div class="col">
       <%=link_to item_path(item) do %>
-        <%=image_tag item.image,size: "170x120",class: "d-inline-flex rounded-circle" %>
+        <%=image_tag item.image,size: "170x120",class: "rounded-circle" %>
       <% end %>
-     </div>
+      <div class="col">
        <%= item.name %>
-       ￥<%=item.price.to_s(:delimited) %>
+      <div class="col">
+       ￥<%= item.price.to_s(:delimited) %>
+      </div>
+      </div>
+     </div>
     <% end %>
+    </div>
 
   <div class="row">
     <div class="col text-right">
-     <%=link_to "全ての商品を見る",items_path %>
+     <%=link_to "全ての商品を見る>",items_path %>
     </div>
   </div>
   </div>

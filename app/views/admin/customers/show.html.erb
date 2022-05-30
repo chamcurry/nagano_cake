@@ -1,38 +1,62 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>
+      <h5 class="m-4">
         <%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細
-      </h3>
-      <p class="group">
-        会員ID <%=@customer.id %>
-      </p>
-      <p class="group">
-        氏名 <%=@customer.first_name %> <%=@customer.last_name %>
-      </p>
-      <p class="group">
-        <!--ここにジャンル-->
-        フリガナ <%=@customer.first_name_kana %> <%=@customer.last_name_kana %>
-      </p>
-      <p class="group">
-        郵便番号 <%=@customer.postal_code %>
-      </p>
-      <p class="group">
-        住所 <%=@customer.address %>
-      </p>
-      <p class="group">
-        電話番号 <%=@customer.telephone_number %>
-      </p>
-      <p class="group">
-        メールアドレス <%=@customer.email %>
-      </p>
-      <p class="group">
-        <!--会員ステータスが渡るようにする-->
-        退会ステータス <%=@customer.is_active %>
-      </p>
-      <%=link_to '編集する',edit_admin_customer_path(@customer),class: "btn btn-success" %>
+      </h5>
+      <div class="row mt-3 mx-4">
+         会員ID
+       <div class="col">
+        <%=@customer.id %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         氏名
+       <div class="col">
+        <%=@customer.first_name %>
+        <%=@customer.last_name %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         フリガナ
+       <div class="col">
+        <%=@customer.first_name_kana %>
+        <%=@customer.last_name_kana %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         郵便番号
+       <div class="col">
+        <%=@customer.postal_code %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         住所
+       <div class="col">
+        <%=@customer.address %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         電話番号
+       <div class="col">
+        <%=@customer.telephone_number %>
+       </div>
+      </div>
+      <div class="row mt-3 mx-4">
+         メールアドレス
+       <div class="col">
+        <%=@customer.email %>
+       </div>
+      </div>
+      <div class="row  my-3 mx-4">
+         会員ステータス
+       <div class="col">
+        <%=@customer.is_active %>
+       </div>
+      </div>
+      <%=link_to '編集する',edit_admin_customer_path(@customer),class: "btn btn-success mt-1 mx-4" %>
       <!--下に注文履歴一覧のページリンクを貼る-->
-      <%=link_to '注文履歴一覧を見る',admin_path,class: "btn btn-info" %>
+      <%=link_to '注文履歴一覧を見る',admin_root_path,class: "btn btn-primary mt-1 mx-4" %>
     </div>
   </div>
 </div>
