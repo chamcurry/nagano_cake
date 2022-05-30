@@ -3,13 +3,13 @@
     <div class="col">
       <%= image_tag 'cupcake',width: '80%', height: '90%',class: "d-block mx-auto background-image"  %>
     </div>
-   
+
   </div>
     <div class="col h3">新着商品</div>
 
     <% @items.last(4).each do |item|%>
      <div class="d-inline-flex">
-      <%=link_to items_id_path(item) do %>
+      <%=link_to item_path(item) do %>
         <%=image_tag item.image,size: "170x120",class: "d-inline-flex rounded-circle" %>
       <% end %>
      </div>

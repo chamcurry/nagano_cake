@@ -15,11 +15,10 @@
         <div class="row navbar">
           <div class="col">
             <%=link_to root_path do %>
-             <%= image_tag 'logo-cake',width: '40%', height: '30%',class: "d-block ml-2 background-image" %>
+             <%= image_tag 'logo-cake',width: '50%', height: '30%',class: "d-block ml-2 background-image" %>
             <% end %>
           </div>
-            <!--ここにロゴを入れる-->
-           <span class="col ml-1 font-weight-bold">
+           <div class="col ml-1 font-weight-bold">
             <% if customer_signed_in? %>
              <div class="text">
               ようこそ、
@@ -27,7 +26,7 @@
               さん！
              </div>
             <% end %>
-            </span>
+           </div>
           <ul class="navbar mr-auto">
           <% if admin_signed_in? %>
             <li class="nav-item list-inline-item border">
@@ -37,7 +36,7 @@
               <%=link_to "会員一覧",admin_customers_path,class: "border rounded p-2" %>
             </li>
             <li class="nav-item list-inline-item">
-              <%=link_to "注文履歴一覧",root_path,class: "border rounded p-2" %>
+              <%=link_to "注文履歴一覧",admin_root_path,class: "border rounded p-2" %>
             </li>
             <li class="nav-item list-inline-item">
               <%= link_to "ジャンル",admin_genres_path,class: "border rounded p-2"%>

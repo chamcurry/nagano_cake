@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root to: "public/homes#top"
   # 管理者側のルーティング
-  get "/admin" => "admin/homes#top"
+  get "/admin" => "admin/homes#top",as: "admin_root"
   namespace :admin do
     resources :customers,only:[:index,:show,:edit,:update]
   end
@@ -19,13 +18,14 @@ Rails.application.routes.draw do
   end
 
 # 会員側ルーティング
+  root to: "public/homes#top"
 # homes
-  get "/" => "public/homes#top"
+  # get "/" => "public/homes#top"
   get "/about" => "public/homes#about"
 
   # items
   get "/items" => "public/items#index"
-  get "/items/#{:id}" => "public/items#show"
+  get "/items/:id" => "public/items#show",as: "item"
 
   # customers
   get "/customers/my_page" => "public/customers#show"
@@ -41,17 +41,17 @@ Rails.application.routes.draw do
   # orders
   get "/orders/new" => "public/orders#new"
   post "/orders" => "public/orders#create"
-  get "/orders#{:id}" => "public/orders#show"
+  get "/orders/:id" => "public/orders#show"
   get "/orders" => "public/orders#index"
   get "/orders/complete" => "orders#complete"
   post "/orders/confirm" => "orders#confirm"
 
   # addresses
   get "/addresses" => "public/addresses#index"
-  get "/addresses/#{:id}/edit" => "public/addresses#edit"
+  get "/addresses/:id/edit" => "public/addresses#edit",as: "edit_address"
   post "/addresses" => "public/addresses#create"
-  patch "/addresses/#{:id}" => "public/addresses#update"
-  delete "/addresses/#{:id}" => "public/addresses#destroy"
+  patch "/addresses/:id" => "public/addresses#update",as: "update_address"
+  delete "/addresses/:id" => "public/addresses#destroy",as: "destroy_addresses"
   # デバイス
   devise_for :customers,skip:[:passwords],controllers: {
   registrations: "public/registrations",
