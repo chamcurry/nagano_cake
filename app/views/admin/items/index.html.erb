@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-       <h4>商品一覧</h4>
-        <div class="float-right mb-3">
+       <div class="h3 mt-5">商品一覧</div>
+        <div class="float-right  mr-5 mb-3">
          <%=link_to "＋",new_admin_item_path,class: "btn  rounded-circle text-secondary shadow-sm"%>
         </div>
       <table class="table">
@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @items.each do |item| %>
+        <% @kaminari.each do |item| %>
           <tr>
             <td><%= item.id %></td>
             <td>
@@ -34,4 +34,5 @@
       </table>
     </div>
   </div>
+    <%= paginate @kaminari,theme: 'twitter-bootstrap-4' %>
 </div>

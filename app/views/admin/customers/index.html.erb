@@ -13,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @customers.each do |customer| %>
+        <% @kaminari.each do |customer| %>
           <tr>
             <td><%= customer.id %></td>
             <td>
@@ -29,5 +29,6 @@
         </tbody>
       </table>
     </div>
+    <%= paginate @kaminari,theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
