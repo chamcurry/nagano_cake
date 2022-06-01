@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   patch "/customers/withdraw" => "public/customers#withdraw"
 
   # cart_items
-  resources :cart_items,only:[:index,:update,:destroy,:create]
+  get "/cart_items" => "public/cart_items#index"
+  post "/cart_items" => "public/cart_items#create"
+  patch "/cart_items/:id" => "public/cart_items#update"
+  delete "/cart_items/:id" => "public/cart_items#destroy"
   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
 
   # orders
