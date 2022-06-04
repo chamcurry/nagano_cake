@@ -5,6 +5,8 @@
      <%=link_to "カートを空にする",cart_items_destroy_all_path,method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger btn-sm" %>
     </div>
   </div>
+ <div class="wrap">
+
   <table class="table table-bordered">
         <thead class="bg-light">
           <tr>
@@ -12,19 +14,38 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
+        <% @sum =0 %>
         <% @cart_item.each do |cart_item| %>
           <tr>
             <td>
-              <%=image_tag cart_item.item.image,size: "200x200" %>
+              <%=image_tag cart_item.item.image,size: "100x80"%>
               <%=cart_item.item.name%>
             </td>
-            <td><%=(cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
-            <td><%=(cart_item.item.price*1.1).floor%></td>
+            <td><%=cart_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td><%= cart_item.amount%></td>
+            <td><%=cart_item.subtotal%></td>
+            <!--<td>ここにカート内のアイテムを削除するリンク</td>-->
+            <% @sum += cart_item.subtotal %>
           </tr>
         <% end %>
         </tbody>
-      </table>
+  </table>
+  <div class="row">
+          <div class="col">
+           <%=link_to "買い物を続ける",root_path,class: "btn btn-primary btn-sm ml-5 my-3" %>
+          </div>
+           <table class="table-bordered">
+            <tr class=" col justify-content-end ">
+             <th class="pl-1 pr-4">合計金額</th><td class="pl-1 pr-4"><%= @sum.to_s(:delimited) %></td>
+            </tr>
+           </table>
+  </div>
+        <div class="row  my-4 justify-content-center">
+          <%=link_to "情報入力に進む",orders_new_path,class: "btn btn-success btn-sm w-25 justify-contenzt-center" %>
+        </div>
+
 </div>
