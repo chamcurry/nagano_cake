@@ -2,7 +2,7 @@
   <div class="row my-3 mx-5 h4">
     <div class="col">ショッピングカート</div>
     <div class="col d-flex justify-content-end">
-     <%=link_to "カートを空にする",cart_items_destroy_all_path,method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger btn-sm" %>
+     <%=link_to "カートを空にする",delete_all_path,method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger btn-sm" %>
     </div>
   </div>
  <div class="wrap">
@@ -28,7 +28,7 @@
             <td><%=cart_item.item.with_tax_price.to_s(:delimited) %></td>
             <td><%= cart_item.amount%></td>
             <td><%=cart_item.subtotal%></td>
-            <!--<td>ここにカート内のアイテムを削除するリンク</td>-->
+            <td><%= link_to "削除する",delete_cart_item_path(cart_item.id),method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger"%></td>
             <% @sum += cart_item.subtotal %>
           </tr>
         <% end %>
@@ -38,9 +38,10 @@
           <div class="col">
            <%=link_to "買い物を続ける",root_path,class: "btn btn-primary btn-sm ml-5 my-3" %>
           </div>
+
            <table class="table-bordered">
             <tr class=" col justify-content-end ">
-             <th class="pl-1 pr-4">合計金額</th><td class="pl-1 pr-4"><%= @sum.to_s(:delimited) %></td>
+             <th class="pl-2 pr-5">合計金額</th><td class="pl-2 pr-5"><%= @sum.to_s(:delimited) %></td>
             </tr>
            </table>
   </div>

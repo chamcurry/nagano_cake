@@ -35,19 +35,19 @@ Rails.application.routes.draw do
   patch "/customers/withdraw" => "public/customers#withdraw"
 
   # cart_items
-  get "/cart_items" => "public/cart_items#index"
+  get "/cart_items/" => "public/cart_items#index"
   post "/cart_items" => "public/cart_items#create"
   patch "/cart_items/:id" => "public/cart_items#update"
-  delete "/cart_items/:id" => "public/cart_items#destroy"
-  delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+  delete "/cart_items/destroy_all" => "public/cart_items#destroy_all",as: "delete_all"
+  delete "/cart_items/:id" => "public/cart_items#destroy",as: "delete_cart_item"
 
   # orders
   get "/orders/new" => "public/orders#new"
   post "/orders" => "public/orders#create"
+  get "/orders/complete" => "public/orders#complete"
+  post "/orders/confirm" => "public/orders#confirm"
   get "/orders/:id" => "public/orders#show"
   get "/orders" => "public/orders#index"
-  get "/orders/complete" => "orders#complete"
-  post "/orders/confirm" => "orders#confirm"
 
   # addresses
   get "/addresses" => "public/addresses#index"

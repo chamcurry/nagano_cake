@@ -18,7 +18,7 @@
       </div>
       <div class="row">
         <div class="col mb-3 font-weight-bold">
-         ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+         ￥<%= @item.with_tax_price.to_s(:delimited) %>(税込)
         </div>
       </div>
       <%=form_with model: @cart_item,url: cart_items_path do |f| %>
