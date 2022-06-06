@@ -21,13 +21,21 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    # unless cart_item.item_id == current_customer.cart_items.all
-    @cart_item =CartItem.new(cart_item_params)
-    @cart_item.customer_id= current_customer.id
-    @cart_item.save
-    redirect_to cart_items_path
-  # else
-
+     @cart_item =CartItem.new(cart_item_params)
+     @cart_item.customer_id= current_customer.id
+     @update_item = CartItem.find_by(item_id: @cart_item.item_id)
+     if @update_item.present? && @cart_item.valid?
+       @cart_item.amount += @update_item.amount
+       @update_item.destroy
+     end
+     
+     if @cart_item.save
+      redirect_to cart_items_path
+     else
+       @item =Item.find(params[:cart_item][:item_id])
+       @cart_item =CartItem.new
+       render ("public/items/show")
+     end
   end
   private
   def cart_item_params

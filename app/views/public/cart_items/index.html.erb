@@ -26,7 +26,8 @@
               <%=cart_item.item.name%>
             </td>
             <td><%=cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td><%= cart_item.amount%></td>
+            <td><%= cart_item.amount%>
+            </td>
             <td><%=cart_item.subtotal%></td>
             <td><%= link_to "削除する",delete_cart_item_path(cart_item.id),method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger"%></td>
             <% @sum += cart_item.subtotal %>
