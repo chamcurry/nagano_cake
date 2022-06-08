@@ -1,11 +1,27 @@
 <div class="container">
-  <div class="row">注文情報入力</div>
-  <% form_with model: @order,url: orders_new_path do |f| %>
-  <div class="row">
+  <div class="row h5 my-3 ml-5">注文情報入力</div>
+  <%=form_with model: @order,url: orders_new_path do |f| %>
+  <div class="row font-weight-bold">
     支払い方法
-    <div class="col">
-
-    </div>
   </div>
+    <div class="col">
+      <%=f.radio_button :pay_method,0,class: "form-check-inline" %>
+      <%=f.label :pay_method,'クレジットカード' %>
+    </div>
+    <div class="col">
+      <%=f.radio_button :pay_method,1,class: "form-check-inline" %>
+      <%=f.label :pay_method,'銀行振込' %>
+    </div>
+  <div class="row font-weight-bold">
+    お届け先
+  </div>
+   <div class="col">
+      <%=f.radio_button :del,,class: "form-check-inline" %>
+      <%=f.label :pay_method,'ご自身の住所' %>
+    </div>
+    <div class="col">
+      <%=f.radio_button :pay_method,1,class: "form-check-inline" %>
+      <%=f.label :pay_method,'登録済住所から選択' %>
+    </div>
   <% end %>
 </div>

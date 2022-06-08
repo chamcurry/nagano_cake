@@ -19,20 +19,24 @@
         </thead>
         <tbody>
         <% @sum =0 %>
-        <% @cart_item.each do |cart_item| %>
+        <% @cart_item.each do |cart| %>
           <tr>
             <td>
-              <%=image_tag cart_item.item.image,size: "100x80"%>
-              <%=cart_item.item.name%>
+              <%=image_tag cart.item.image,size: "100x80"%>
+              <%=cart.item.name%>
             </td>
-            <td><%=cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td><%= cart_item.amount%>
+            <td><%=cart.item.with_tax_price.to_s(:delimited) %></td>
+            <td>
+            <%= form_with model: cart, url: update_cart_path(cart) do |f| %>
+              <%=f.select :amount,*[1..5]%>
+              <%=f.submit "変更",class: "btn btn-success btn-sm" %>
+            <% end %>
             </td>
-            <td><%=cart_item.subtotal%></td>
-            <td><%= link_to "削除する",delete_cart_item_path(cart_item.id),method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger"%></td>
-            <% @sum += cart_item.subtotal %>
+            <td><%=cart.subtotal%></td>
+            <td><%= link_to "削除する",delete_cart_item_path(cart.id),method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger"%></td>
+            <% @sum += cart.subtotal %>
           </tr>
-        <% end %>
+        <%end %>
         </tbody>
   </table>
   <div class="row">
@@ -49,5 +53,4 @@
         <div class="row  my-4 justify-content-center">
           <%=link_to "情報入力に進む",orders_new_path,class: "btn btn-success btn-sm w-25 justify-contenzt-center" %>
         </div>
-
 </div>

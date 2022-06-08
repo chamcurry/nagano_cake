@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   # cart_items
   get "/cart_items/" => "public/cart_items#index"
   post "/cart_items" => "public/cart_items#create"
-  patch "/cart_items/:id" => "public/cart_items#update"
+  patch "/cart_items/:id" => "public/cart_items#update",as: "update_cart"
   delete "/cart_items/destroy_all" => "public/cart_items#destroy_all",as: "delete_all"
   delete "/cart_items/:id" => "public/cart_items#destroy",as: "delete_cart_item"
 

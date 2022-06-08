@@ -6,6 +6,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+    @update_cart_item = CartItem.find(params[:id])
+    @update_cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
 
   def destroy
@@ -28,7 +31,7 @@ class Public::CartItemsController < ApplicationController
        @cart_item.amount += @update_item.amount
        @update_item.destroy
      end
-     
+
      if @cart_item.save
       redirect_to cart_items_path
      else
