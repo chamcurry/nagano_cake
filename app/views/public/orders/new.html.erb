@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row h5 my-3 ml-5">注文情報入力</div>
+  <div class="row h4 my-3 ml-4">注文情報入力</div>
   <%=form_with model: @order,url: orders_new_path do |f| %>
   <div class="row font-weight-bold">
     支払い方法
@@ -15,13 +15,49 @@
   <div class="row font-weight-bold">
     お届け先
   </div>
-   <div class="col">
-      <%=f.radio_button :del,,class: "form-check-inline" %>
-      <%=f.label :pay_method,'ご自身の住所' %>
+   <% if current_customer.address %>
+   <div class="col mb-2">
+      <%=f.radio_button :order_id,3,class: "form-check-inline"%>
+      <%=f.label :ご自身の住所 %>
+      <div class="col mb-2 ml-4">
+       〒<%=current_customer.postal_code %>
+       <%=current_customer.address%><br>
+       <%=current_customer.first_name%>
+       <%=current_customer.last_name %>
+      </div>
     </div>
-    <div class="col">
-      <%=f.radio_button :pay_method,1,class: "form-check-inline" %>
-      <%=f.label :pay_method,'登録済住所から選択' %>
+   <% end %>
+    <div class="col mb-2">
+      <%=f.radio_button :order_id,4,class: "form-check-inline"%>
+      <%=f.label '登録済住所から選択' %><br>
+      <%=f.text_field :delivery_name,class: "form-control ml-4"%>
+      <!--<.collection_select(:name, @address, :id, :address) %>-->
+    </div>
+    <div class="col mb-3">
+      <%=f.radio_button :order_id,5,class: "form-check-inline" %>
+      <%=f.label '新しいお届け先' %>
+      <div class="row mb-3">
+        <%=f.label '郵便番号(ハイフンなし)',class: "col-sm-4 ml-5"%>
+        <div class="col">
+         <%=f.text_field :delivery_postal,class: 'form-control-sm' %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <%=f.label '住所',class: "col-sm-4 ml-5"%>
+        <div class="col">
+         <%=f.text_area :delivery_adress,size: '40x20',class: 'form-control-sm' %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <%=f.label '宛名',class: "col-sm-4 ml-5"%>
+        <div class="col">
+         <%=f.text_field :delivery_name,class: 'form-control-sm'%>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <%=f.submit "確認画面へ進む",class: "btn btn-primary w-25" %>
     </div>
   <% end %>
 </div>
