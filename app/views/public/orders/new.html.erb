@@ -31,7 +31,7 @@
       <%=f.radio_button :order_id,4,class: "form-check-inline"%>
       <%=f.label '登録済住所から選択' %><br>
       <%=f.text_field :delivery_name,class: "form-control ml-4"%>
-      <!--<.collection_select(:name, @address, :id, :address) %>-->
+      <%=f.collection_select(:name, @address, :id, :address) %>
     </div>
     <div class="col mb-3">
       <%=f.radio_button :order_id,5,class: "form-check-inline" %>
