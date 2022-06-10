@@ -45,14 +45,14 @@ Rails.application.routes.draw do
   get "/orders/new" => "public/orders#new"
   post "/orders" => "public/orders#create"
   get "/orders/complete" => "public/orders#complete"
-  post "/orders/confirm" => "public/orders#confirm"
+  post "/orders/confirm" => "public/orders#confirm",as: "confirm_order"
   get "/orders/:id" => "public/orders#show"
   get "/orders" => "public/orders#index"
 
   # addresses
   get "/addresses" => "public/addresses#index"
   get "/addresses/:id/edit" => "public/addresses#edit",as: "edit_address"
-  post "/addresses" => "public/addresses#create"
+  post "/addresses" => "public/addresses#create",as: "create_address"
   patch "/addresses/:id" => "public/addresses#update",as: "update_address"
   delete "/addresses/:id" => "public/addresses#destroy",as: "destroy_addresses"
   # デバイス

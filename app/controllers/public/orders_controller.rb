@@ -2,13 +2,13 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
     @order =Order.new
-    @address = Address.where(customer_id: current_customer.id)
+    @address = Address.all
   end
 
   def confirm
     @order =Order.new(order_params)
     @order.save
-    redirect_to orders_confirm_path
+    redirect_to confirm_order_path
   end
 
   def complete
@@ -24,6 +24,6 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.permit(:delivery_adress,:delivery_postal,:delivery_name)
+    params.require(:order).permit(:delivery_adress,:delivery_postal,:delivery_name,:customer_id,:pay_method, :order_id, :address_id)
   end
 end

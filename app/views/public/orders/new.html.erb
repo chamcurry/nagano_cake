@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row h4 my-3 ml-4">注文情報入力</div>
-  <%=form_with model: @order,url: orders_new_path do |f| %>
+  <%=form_with model: @order,url: confirm_order_path do |f| %>
   <div class="row font-weight-bold">
     支払い方法
   </div>
@@ -15,8 +15,8 @@
   <div class="row font-weight-bold">
     お届け先
   </div>
-   <% if current_customer.address %>
-   <div class="col mb-2">
+    <% if current_customer.address %>
+    <div class="col mb-2">
       <%=f.radio_button :order_id,3,class: "form-check-inline"%>
       <%=f.label :ご自身の住所 %>
       <div class="col mb-2 ml-4">
@@ -26,12 +26,11 @@
        <%=current_customer.last_name %>
       </div>
     </div>
-   <% end %>
+    <% end %>
     <div class="col mb-2">
-      <%=f.radio_button :order_id,4,class: "form-check-inline"%>
+      <%=f.radio_button :customer_id,4,class: "form-check-inline"%>
       <%=f.label '登録済住所から選択' %><br>
-      <%=f.text_field :delivery_name,class: "form-control ml-4"%>
-      <%=f.collection_select(:name, @address, :id, :address) %>
+      <%=f.collection_select(:address_id, @address, :id, :full_deliveries) %>
     </div>
     <div class="col mb-3">
       <%=f.radio_button :order_id,5,class: "form-check-inline" %>
@@ -55,7 +54,6 @@
         </div>
       </div>
     </div>
-
     <div class="row d-flex justify-content-center">
       <%=f.submit "確認画面へ進む",class: "btn btn-primary w-25" %>
     </div>
