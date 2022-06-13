@@ -1,23 +1,24 @@
 <div class="container">
   <div class="row h4 my-3 ml-4">注文情報入力</div>
-  <%=form_with model: @order,url: confirm_order_path do |f| %>
+  <%=form_with model: @order,url: confirm_order_path,method: :post do |f| %>
   <div class="row font-weight-bold">
     支払い方法
   </div>
+    <%#f.collection_radio_buttons :pay_amount, Order.pay_methods_i18n, :first, :last %>
     <div class="col">
-      <%=f.radio_button :pay_method,0,class: "form-check-inline" %>
-      <%=f.label :pay_method,'クレジットカード' %>
+      <%=f.radio_button :pay_method,"credit_card",class: "form-check-inline" %>
+      <%=f.label :pay_method, 'クレジットカード', value: "credit_card" %>
     </div>
     <div class="col">
-      <%=f.radio_button :pay_method,1,class: "form-check-inline" %>
-      <%=f.label :pay_method,'銀行振込' %>
+      <%=f.radio_button :pay_method,"transfer",class: "form-check-inline" %>
+      <%=f.label :pay_method,'銀行振込', value: "transfer" %>
     </div>
   <div class="row font-weight-bold">
     お届け先
   </div>
     <% if current_customer.address %>
     <div class="col mb-2">
-      <%=f.radio_button :order_id,3,class: "form-check-inline"%>
+      <%=f.radio_button :address_option,0,class: "form-check-inline"%>
       <%=f.label :ご自身の住所 %>
       <div class="col mb-2 ml-4">
        〒<%=current_customer.postal_code %>
@@ -28,12 +29,12 @@
     </div>
     <% end %>
     <div class="col mb-2">
-      <%=f.radio_button :customer_id,4,class: "form-check-inline"%>
+      <%=f.radio_button :address_option,1,class: "form-check-inline"%>
       <%=f.label '登録済住所から選択' %><br>
       <%=f.collection_select(:address_id, @address, :id, :full_deliveries) %>
     </div>
     <div class="col mb-3">
-      <%=f.radio_button :order_id,5,class: "form-check-inline" %>
+      <%=f.radio_button :address_option,2,class: "form-check-inline" %>
       <%=f.label '新しいお届け先' %>
       <div class="row mb-3">
         <%=f.label '郵便番号(ハイフンなし)',class: "col-sm-4 ml-5"%>

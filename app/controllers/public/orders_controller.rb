@@ -7,8 +7,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order =Order.new(order_params)
-    @order.save
-    redirect_to confirm_order_path
+    @order.customer_id = current_customer.id
+    p @order
   end
 
   def complete
@@ -24,6 +24,6 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:delivery_adress,:delivery_postal,:delivery_name,:customer_id,:pay_method, :order_id, :address_id)
+    params.require(:order).permit(:id,:customer_id,:delivery_adress,:delivery_postal,:delivery_name,:pay_method)
   end
 end
