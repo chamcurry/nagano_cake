@@ -8,7 +8,13 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order =Order.new(order_params)
     @order.customer_id = current_customer.id
-    p @order
+    p@order
+    if params[:order][:address_option] == "0"
+    elsif params[:order][:address_option] == "1"
+      @order.postal_code = Address.find(params[:id]).postal_code
+      @order.address = Address.find(params[:id]).address
+      @order.name = Address.find(params[:id]).name
+    end
   end
 
   def complete

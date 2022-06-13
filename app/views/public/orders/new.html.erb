@@ -19,7 +19,7 @@
     <% if current_customer.address %>
     <div class="col mb-2">
       <%=f.radio_button :address_option,0,class: "form-check-inline"%>
-      <%=f.label :ご自身の住所 %>
+      <%=f.label 'ご自身の住所' %>
       <div class="col mb-2 ml-4">
        〒<%=current_customer.postal_code %>
        <%=current_customer.address%><br>
