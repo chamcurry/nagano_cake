@@ -14,6 +14,7 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = Address.find(params[:id]).postal_code
       @order.address = Address.find(params[:id]).address
       @order.name = Address.find(params[:id]).name
+    elsif params[:order][:address_option] == "2"
     end
   end
 
@@ -30,6 +31,6 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:id,:customer_id,:delivery_adress,:delivery_postal,:delivery_name,:pay_method)
+    params.require(:order).permit(:id,:customer_id,:delivery_adress,:delivery_postal,:delivery_name,:pay_method,:pay_amount)
   end
 end

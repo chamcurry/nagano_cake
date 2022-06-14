@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row h4 my-3 ml-4">注文情報入力</div>
-  <%=form_with model: @order,url: confirm_order_path,method: :post do |f| %>
+  <%=form_with model: @order,url: confirm_order_path,method: :post,local: true do |f| %>
   <div class="row font-weight-bold">
     支払い方法
   </div>
@@ -31,7 +31,7 @@
     <div class="col mb-2">
       <%=f.radio_button :address_option,1,class: "form-check-inline"%>
       <%=f.label '登録済住所から選択' %><br>
-      <%=f.collection_select(:address_id, @address, :id, :full_deliveries) %>
+      <%=f.collection_select(:registered, @address, :id, :full_deliveries) %>
     </div>
     <div class="col mb-3">
       <%=f.radio_button :address_option,2,class: "form-check-inline" %>
