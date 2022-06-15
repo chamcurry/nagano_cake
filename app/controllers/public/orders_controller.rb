@@ -1,14 +1,14 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @order =Order.new
+    # @order =Order.new
     @address = Address.all
   end
 
   def confirm
+    # @order =Order.new(order_params)
+    # @order.customer_id = current_customer.id
     @cart_item = current_customer.cart_items.all
-    @order =Order.new(order_params)
-    @order.customer_id = current_customer.id
     p@order
     if params[:address_option] == "0"
     elsif params[:address_option] == "1"
