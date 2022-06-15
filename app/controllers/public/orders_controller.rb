@@ -6,15 +6,16 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_item = current_customer.cart_items.all
     @order =Order.new(order_params)
     @order.customer_id = current_customer.id
     p@order
-    if params[:order][:address_option] == "0"
-    elsif params[:order][:address_option] == "1"
+    if params[:address_option] == "0"
+    elsif params[:address_option] == "1"
       @order.postal_code = Address.find(params[:id]).postal_code
       @order.address = Address.find(params[:id]).address
       @order.name = Address.find(params[:id]).name
-    elsif params[:order][:address_option] == "2"
+    elsif params[:address_option] == "2"
     end
   end
 
@@ -22,6 +23,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+
   end
 
   def index
