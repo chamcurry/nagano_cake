@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row h4 my-3 ml-4">注文情報入力</div>
-  <%=form_with url: confirm_order_path,method: :post,local: true do |f| %>
+  <%=form_with model: @order,url: confirm_order_path,method: :post,local: true do |f| %>
   <div class="row font-weight-bold">
     支払い方法
   </div>
@@ -8,11 +8,11 @@
      <%#f.collection_radio_buttons :pay_amount, Order.pay_methods_i18n, :first, :last %>
     </div>
     <div class="col">
-      <%=f.radio_button :pay_option,"0",class: "form-check-inline" %>クレジットカード
+      <%=f.radio_button :pay_method,"credit_card",class: "form-check-inline" %>クレジットカード
       <%#f.label :pay_method, 'クレジットカード', value: "credit_card" %>
     </div>
     <div class="col">
-      <%=f.radio_button :pay_option,"1",class: "form-check-inline" %>銀行振込
+      <%=f.radio_button :pay_method,"transfer",class: "form-check-inline" %>銀行振込
       <%#f.label :pay_method,'銀行振込', value: "transfer" %>
     </div>
   <div class="row font-weight-bold">
