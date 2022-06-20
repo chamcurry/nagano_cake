@@ -33,23 +33,29 @@
         <thead>
           <tr><th class="bg-light">送料</th><td>800</td></tr>
           <tr><th class="bg-light">商品合計</th><td class="py-3"><%=@sum.to_s(:delimited)%></td></tr>
-          <tr><th class="bg-light">請求金額</th><td  class="py-3"><%=@sum +800 %></td></tr>
+          <tr><th class="bg-light">請求金額</th><td class="py-3"><%=@sum +800 %></td></tr>
         </thead>
       </table>
    </div>
   </div>
+  <%=form_with model: @order,url: orders_path,method: :post do |f| %>
+    <%=f.hidden_field :customer_id %>
+    <%=f.hidden_field :pay_amount,:value => @sum %>
+    <%=f.hidden_field :pay_method %>
+    <%=f.hidden_field :shipping_fee,:value => 800 %>
+    <%=f.hidden_field :delivery_postal %>
+    <%=f.hidden_field :delivery_adress %>
+    <%=f.hidden_field :delivery_name %>
    <div class="row my-2 ml-2">
     <div class="font-weight-bold mx-0">支払い方法</div>
-    <div class="col"><%=%></div>
+    <div class="col"><%=@order.pay_method_i18n%></div>
    </div>
    <div class="row my-3 ml-2">
     <div class="font-weight-bold mx-0">お届け先</div>
-    <div class="col"><%=%></div>
+    <div class="col"><%=@order.order_deliveries%></div>
    </div>
-  <%# form_with model : @order do |f| %>
    <div class="row justify-content-center">
-      <!--（仮）ここにcreateアクションで保存するボタンを作るf.submit-->
-       <%=link_to "注文を確定する",orders_new_path,class: "btn btn-success w-25" %>
+     <%=f.submit '注文を確定する',class: "btn btn-success w-25" %>
    </div>
-  <%# end %>
+  <% end %>
 </div>

@@ -9,11 +9,15 @@ class Public::OrdersController < ApplicationController
     @order =Order.new(order_params)
     @order.customer_id = current_customer.id
     @cart_item = current_customer.cart_items.all
+    @address = Address.find(params[:order][:registered])
     if params[:order][:address_option] == "0"
+      @order.delivery_postal = current_customer.postal_code
+      @order.delivery_adress = current_customer.address
+      @order.delivery_name = current_customer.first_name + current_customer.last_name
     elsif params[:order][:address_option] == "1"
-      @order.delivery_postal = Address.find(params[:order][:registered]).postal_code
-      @order.delivery_adress = Address.find(params[:order][:registered]).address
-      @order.delivery_name = Address.find(params[:order][:registered]).name
+      @order.delivery_postal = @address.postal_code
+      @order.delivery_adress = @address.address
+      @order.delivery_name = @address.name
     elsif params[:address_option] == "2"
     end
     p@order
@@ -23,7 +27,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-
+    @order =Order.new(order_params)
+    @order.save
+    redirect_to orders_complete_path
   end
 
   def index
@@ -33,6 +39,6 @@ class Public::OrdersController < ApplicationController
   end
   private
   def order_params
-    params.require(:order).permit(:id,:customer_id,:delivery_adress,:delivery_postal,:delivery_name,:pay_method,:pay_amount)
+    params.require(:order).permit(:customer_id,:delivery_adress,:delivery_postal,:delivery_name,:pay_method,:pay_amount,:shipping_fee,:order_status)
   end
 end

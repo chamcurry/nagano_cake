@@ -58,3 +58,4 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
 gem 'enum_help'
+gem 'pry-byebug',group: :development

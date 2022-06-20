@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row h4 my-3 ml-4">注文情報入力</div>
-  <%=form_with model: @order,url: confirm_order_path,method: :post,local: true do |f| %>
   <div class="row font-weight-bold">
     支払い方法
   </div>
+  <%=form_with model: @order,url: confirm_order_path,method: :post,local: true do |f| %>
     <div class="radio_button">
      <%#f.collection_radio_buttons :pay_amount, Order.pay_methods_i18n, :first, :last %>
     </div>
@@ -22,12 +22,12 @@
     <div class="col mb-2">
       <%=f.radio_button :address_option,0,class: "form-check-inline"%>
       <%=f.label 'ご自身の住所' %>
-      <div class="col mb-2 ml-4">
+       <div class="col mb-2 ml-4">
        〒<%=current_customer.postal_code %>
-       <%=current_customer.address%><br>
-       <%=current_customer.first_name%>
-       <%=current_customer.last_name %>
-      </div>
+        <%=current_customer.address%><br>
+        <%=current_customer.first_name%>
+        <%=current_customer.last_name %>
+       </div>
     </div>
     <% end %>
     <div class="col mb-2">
