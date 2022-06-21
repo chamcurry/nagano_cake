@@ -25,11 +25,13 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-
+  
   def create
     @order =Order.new(order_params)
-    @order.save
-    redirect_to orders_complete_path
+    if @order.save
+       current_customer.cart_items.destroy_all
+     redirect_to orders_complete_path
+    end
   end
 
   def index
