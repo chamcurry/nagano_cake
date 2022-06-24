@@ -1,2 +1,47 @@
-<h1>Public::Orders#show</h1>
-注文履歴詳細
+<div class="container">
+  <div class="h4 my-4">注文履歴詳細</div>
+<div class="row">
+
+  <div class="col-8">
+    <div class="h5">注文情報</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr><th class="bg-light">注文日<td><%=@order.created_at.strftime('%Y/%m/%d') %></td></th></tr>
+        <tr><th class="bg-light">配送先<td><%=@order.order_deliveries%></td></th></tr>
+        <tr><th class="bg-light">支払方法<td><%=@order.pay_method_i18n%></td></th></tr>
+        <!--<tr><th class="bg-light">注文ステータス</th></tr>-->
+      </thead>
+    </table>
+  </div>
+    <div class="col-4">
+    <div class="h5">請求情報</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr><th class="bg-light">商品合計<td><%=@order.pay_amount.to_s(:delimited) %></td></th></tr>
+        <tr><th class="bg-light">配送料<td>800</td></th></tr>
+        <tr><th class="bg-light font-weight-bold">ご請求額<td><%=@order.pay_amount + 800%></td></th></tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+ <div class="h5">注文内容</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>単価(税込)</th>
+          <th>個数</th>
+          <th>小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
