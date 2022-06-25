@@ -13,16 +13,18 @@
         </tr>
       </thead>
       <tbody>
-      <% @orders.each do |order_detail| %>
+      <% @order_details.each do |order| %>
         <tr>
-          <td><%=order_detail.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%=order_detail.order_deliveries%></td>
+          <td><%=order.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%=order.order_deliveries%></td>
           <td>
-            <%#order_detail%>
-            </td>
-          <td><%=order_detail.pay_amount.to_s(:delimited)%>円</td>
+          <%order.order_details.each do |order_detail|%>
+           <%=order_detail.item.name%>
+          <% end %>
+          </td>
+          <td><%=order.pay_amount.to_s(:delimited)%>円</td>
           <!--<td>余裕があればここに注文ステータスを付与</td>-->
-          <td><%=link_to "表示する",order_path(order_detail),class: "btn btn-primary"%></td>
+          <td><%=link_to "表示する",order_path(order),class: "btn btn-primary"%></td>
         </tr>
       <% end %>
       </tbody>
