@@ -33,7 +33,7 @@
         <thead>
           <tr><th class="bg-light">送料</th><td>800</td></tr>
           <tr><th class="bg-light">商品合計</th><td class="py-3"><%=@sum.to_s(:delimited)%></td></tr>
-          <tr><th class="bg-light">請求金額</th><td class="py-3"><%=@sum +800 %></td></tr>
+          <tr><th class="bg-light">請求金額</th><td class="py-3"><%=(@sum +800).to_s(:delimited) %></td></tr>
         </thead>
       </table>
    </div>
