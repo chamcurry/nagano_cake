@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   def index
     @item =Item.new
     @items =Item.all
-    @kaminari = Item.all.page(params[:page]).per(8)
+    @kaminari = Item.all.page(params[:page]).per(4)
   end
   def show
     @item =Item.find(params[:id])

@@ -32,7 +32,7 @@
               <%=f.submit "変更",class: "btn btn-success btn-sm" %>
             <% end %>
             </td>
-            <td><%= cart.subtotal %></td>
+            <td><%= cart.subtotal.to_s(:delimited) %></td>
             <td><%= link_to "削除する",delete_cart_item_path(cart.id),method: :delete,data:{confirm: "本当に消しますか？"},class: "btn btn-danger"%></td>
             <% @sum += cart.subtotal %>
           </tr>
