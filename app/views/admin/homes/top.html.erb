@@ -13,12 +13,18 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.each do |detail| %>
+          <% @orders.each do |detail| %>
           <tr>
             <!--注文履歴詳細ページへのリンクを付与する-->
             <td><%= link_to detail.created_at,admin_order_path(detail) %></td>
-            <td><%= detail.order.customer.first_name + detail.order.customer.last_name %></td>
-            <td><%= detail.amount %></td>
+            <td><%= detail.customer.first_name + detail.customer.last_name %></td>
+            <td>
+               <%@total = 0%>
+               <% detail.order_details.each do |td| %>
+                <%@total += td.amount%>
+               <% end %>
+                <%=@total%>
+            </td>
             <!--注文ステータス-->
             <td><%#order.order_status %></td>
           </tr>
@@ -26,6 +32,6 @@
         </tbody>
       </table>
     </div>
- <%=paginate @order,theme: 'twitter-bootstrap-4' %>
+ <%=paginate @orders,theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

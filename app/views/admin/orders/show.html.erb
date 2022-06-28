@@ -3,12 +3,12 @@
 
   <div class="row my-2 ">
     <div class="font-weight-bold mx-0">購入者</div>
-    <div class="col ml-5"><%=@order.customer.first_name + @order.customer.last_name%></div>
+    <div class="col ml-5"><%=link_to @order.customer.first_name + @order.customer.last_name,admin_customer_path(@order.customer_id)%></div>
   </div>
 
   <div class="row my-2">
     <div class="font-weight-bold mx-0">注文日</div>
-    <div class="col ml-5"><%=@order.created_at%></div>
+    <div class="col ml-5"><%=@order.created_at.strftime('%Y/%m/%d')%></div>
   </div>
 
   <div class="row my-2">
@@ -44,17 +44,17 @@
     </table>
     <div class="row">
      <div class="font-weight-bold ml-4">商品合計</div>
-     <div class="ml-5">
+     <div class="ml-4">
       <%@total = 0%>
           <%@order_details.each do |order_detail|%>
             <%@total += order_detail.item_price%>
           <%end%>
       <%=@total.to_s(:delimited)%>円
      </div>
-       <div class="font-weight-bold ml-5">送料</div>
-       <div class=" ml-5">800円</div>
-       <div class="font-weight-bold ml-5">請求金額</div>
-       <div class=" ml-5"><%=(@total + 800).to_s(:delimited)%>円</div>
+       <div class="d-flex flex-column font-weight-bold ml-5">送料</div>
+       <div class=" ml-4">800円</div>
+       <div class="d-flex flex-column font-weight-bold ml-5">請求金額</div>
+       <div class="font-weight-bold ml-4"><%=(@total + 800).to_s(:delimited)%>円</div>
     </div>
   </div>
 </div>

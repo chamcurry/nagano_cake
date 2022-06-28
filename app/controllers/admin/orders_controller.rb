@@ -7,7 +7,4 @@ class Admin::OrdersController < ApplicationController
 
   def update
   end
-  # def order_params
-  #   params.require(:order).permit(:id)
-  # end
 end
