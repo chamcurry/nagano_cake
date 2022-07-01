@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 
   validates :image, presence: true
 
+  enum is_active: {on_sale: true, stop_selling: false }
 
   def with_tax_price
       (price * 1.1).floor
