@@ -13,8 +13,8 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_my_page_path(@customer)
   end
 
-  def unsubscribe
-  end
+  # def unsubscribe
+  # end
 
   def withdraw
     @customer = current_customer

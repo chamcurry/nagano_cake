@@ -49,7 +49,9 @@
             </tr>
            </table>
   </div>
+    <% if @cart_item.present? %>
       <div class="row  my-4 justify-content-center">
           <%=link_to "情報入力に進む",orders_new_path,class: "btn btn-success btn-sm w-25 justify-contenzt-center" %>
       </div>
+    <% end %>
 </div>
