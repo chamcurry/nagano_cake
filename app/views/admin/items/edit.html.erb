@@ -35,8 +35,8 @@
   <div class="row mb-2">
     <%= f.label "販売ステータス" %>
   <div class="col">
-   <%= f.radio_button :is_active,"販売中",:checked =>true %>販売中
-   <%= f.radio_button :is_active,"販売停止中",:checked =>false %>販売停止中
+   <%= f.radio_button :is_active,:on_sale,:checked =>true %>販売中
+   <%= f.radio_button :is_active,:stop_selling,:checked =>false %>販売停止中
   </div>
   </div>
   <div class="row">

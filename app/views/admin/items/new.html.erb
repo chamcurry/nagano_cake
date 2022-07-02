@@ -37,11 +37,11 @@
           <label>販売ステータス</label>
           <span class="true">
            <%= f.label :is_active,'販売中' %>
-           <%= f.radio_button :is_active,true,class: "form-check form-check-inline" %>
+           <%= f.radio_button :is_active,:on_sale,class: "form-check form-check-inline" %>
           </span>
           <span class="false">
            <%= f.label :is_active,'販売停止中' %>
-           <%= f.radio_button :is_active,false,class: "form-check form-check-inline"%>
+           <%= f.radio_button :is_active,:stop_selling,class: "form-check form-check-inline"%>
           </span>
         </div>
         <div class="row form_group justify-content-center">
