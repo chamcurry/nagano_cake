@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
     end
   end
 # 会員が新規登録したリダイレクト先をマイページに遷移したい
-  # def after_sign_up_path_for(_resource)
-  #   if resource != :admin
-  #     customers_my_page_path
-  #   end
+  # def after_sign_up_path_for(resource)
+  #     customers_my_page_path(resource)
   # end
 end
