@@ -6,13 +6,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_permitted_parameters, if: :registrations_controller?
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def index
-    @customers =Customer.all
-  end
-  def show
-    @customer =Customer.find(params[:id])
-  end
-
+    def after_sign_up_path_for(resource)
+       customers_my_page_path
+    end
   # GET /resource/sign_up
   # def new
   #   super

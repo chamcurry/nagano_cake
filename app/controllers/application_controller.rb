@@ -7,8 +7,5 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-# 会員が新規登録したリダイレクト先をマイページに遷移したい
-  # def after_sign_up_path_for(resource)
-  #     customers_my_page_path(resource)
-  # end
+
 end
