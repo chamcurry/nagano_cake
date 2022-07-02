@@ -27,11 +27,9 @@ class Public::SessionsController < Devise::SessionsController
     # アカウントが取得できない場合、このメソッドを終了する
     return if !@customer
     # [処理内容２]取得したアカウントのパスワードと入力されたパスワードが一致しているか判別
-    if @customer.valid_password?(params[:customer][:password])
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_active == true
       # [処理内容３]is_activeの値がtrueだった場合、サインアップ画面に遷移させる
-     if @customer.is_active == true
        redirect_to new_customer_registration_path
-     end
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
