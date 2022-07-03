@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :cart_items,dependent: :destroy
   has_many :addresses,dependent: :destroy
 
-  enum is_active: {withdraw: true, validity: false }
+  # enum is_active: {withdraw: true, validity: false }
 
   # def full_name
   #   self.first_name + " " + self.last_name
