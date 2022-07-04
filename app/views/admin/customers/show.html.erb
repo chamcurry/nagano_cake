@@ -50,9 +50,11 @@
       </div>
       <div class="row  my-3 mx-4">
          会員ステータス
-       <div class="col">
-        <%=@customer.is_active_i18n %>
-       </div>
+         <% if @customer.is_active == true %>
+          <div class="col">退会</div>
+         <%else%>
+          <div class="col">有効</div>
+         <% end %>
       </div>
       <%=link_to '編集する',edit_admin_customer_path(@customer),class: "btn btn-success mt-1 mx-4" %>
       <!--下に注文履歴一覧のページリンクを貼る-->

@@ -62,8 +62,8 @@
    <div class="row mb-3">
      <%= f.label "会員ステータス",class: "col-sm-2" %>
     <div class="col">
-     <%= f.radio_button :is_active,"有効",:checked =>true %>有効
-     <%= f.radio_button :is_active,"退会",:checked =>false %>退会
+     <%= f.radio_button :is_active,true %>有効
+     <%= f.radio_button :is_active,false%>退会
     </div>
    </div>
    <div class="row ml-5">
